@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Work+Sans:100,200,300,400,500,600,700,800,900&display=swap');
+
+html {
+	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
+  height: 100%;
+  background: $color-background;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+
+  background-color: $color-background;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(214, 214, 214));
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  color: $color-text;
+  font-family: 'barlow', sans-serif;
+  line-height: 1.3;
+
+  cursor: crosshair;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  cursor: crosshair;
+  transition: font-weight .1s linear;
+  &:hover {
+    color: inherit;
+    font-weight: bold;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1rem;
+  margin: 0 auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0 1.2rem;
+}
