@@ -1,7 +1,6 @@
 <template>
   <main class="site-main">
     <div>
-      <Header />
       <Gallery />
       <CV />
     </div>
@@ -9,13 +8,11 @@
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
 import Gallery from '~/components/Gallery.vue'
 import CV from '~/components/CV.vue'
 
 export default {
   components: {
-    Header,
     Gallery,
     CV
   },

@@ -1,12 +1,15 @@
 <template>
   <div class="gallery">
-    <a  v-for="(entry, index) in entries" :key="index" :href="entry.url" class="gallery-item">
+    <a v-for="(entry, index) in entries" :key="index" :href="entry.url" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
       <img :src="entry.mainImage.url" />
       <div class="text">
         <span>{{ entry.title }}</span>
         <span>{{ entry.year }}</span>
       </div>
     </a>
+    <!--<div class="more">
+      <a href="#">&rarr; View more projects</a>
+    </div>-->
   </div>
 </template>
 
@@ -83,6 +86,10 @@ export default {
     color: inherit;
     text-decoration: none;
 
+    opacity: 0;
+    animation: fade-in 1s ease-in;
+    animation-fill-mode: forwards;
+
     span {
       display: block;
     }
@@ -108,6 +115,28 @@ export default {
     &-item {
       width: 100%;
     }
+  }
+}
+
+.more {
+  display: block;
+  width: 100%;
+  text-align: right;
+  margin: 0 1rem 2.5rem;
+  padding: 2.5rem 0 0.5rem;
+  border-bottom: 1px solid $color-main;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>
