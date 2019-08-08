@@ -1,10 +1,10 @@
 <template>
   <div class="gallery">
-    <a v-for="(entry, index) in entries" :key="index" :href="entry.url" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
-      <img :src="entry.mainImage.url" />
+    <a v-for="(project, index) in projects" :key="index" :href="`projects/${project.slug}`" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
+      <img :src="project.mainImage[0].url" />
       <div class="text">
-        <span>{{ entry.title }}</span>
-        <span>{{ entry.year }}</span>
+        <span>{{ project.title }}</span>
+        <span>{{ project.year }}</span>
       </div>
     </a>
     <!--<div class="more">
@@ -14,60 +14,22 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
 export default {
-  data: function() {
-    return {
-      entries: [
-        {
-          mainImage: {
-            url: 'https://instagram.fosl3-1.fna.fbcdn.net/vp/0af45072e6a6c9297a34ccfecd154016/5D821BC0/t51.2885-15/e35/32715589_2182456961795147_4601917093837799424_n.jpg?_nc_ht=instagram.fosl3-1.fna.fbcdn.net'
-          },
-          title: 'A space for opportunity',
-          year: '2018',
-          url: '#'
-        },
-        {
-          mainImage: {
-            url: 'https://instagram.fosl3-1.fna.fbcdn.net/vp/0af45072e6a6c9297a34ccfecd154016/5D821BC0/t51.2885-15/e35/32715589_2182456961795147_4601917093837799424_n.jpg?_nc_ht=instagram.fosl3-1.fna.fbcdn.net'
-          },
-          title: 'A space for opportunity',
-          year: '2018',
-          url: '#'
-        },
-        {
-          mainImage: {
-            url: 'https://instagram.fosl3-1.fna.fbcdn.net/vp/0af45072e6a6c9297a34ccfecd154016/5D821BC0/t51.2885-15/e35/32715589_2182456961795147_4601917093837799424_n.jpg?_nc_ht=instagram.fosl3-1.fna.fbcdn.net'
-          },
-          title: 'A space for opportunity',
-          year: '2018',
-          url: '#'
-        },
-        {
-          mainImage: {
-            url: 'https://instagram.fosl3-1.fna.fbcdn.net/vp/0af45072e6a6c9297a34ccfecd154016/5D821BC0/t51.2885-15/e35/32715589_2182456961795147_4601917093837799424_n.jpg?_nc_ht=instagram.fosl3-1.fna.fbcdn.net'
-          },
-          title: 'A space for opportunity',
-          year: '2018',
-          url: '#'
-        },
-        {
-          mainImage: {
-            url: 'https://instagram.fosl3-1.fna.fbcdn.net/vp/0af45072e6a6c9297a34ccfecd154016/5D821BC0/t51.2885-15/e35/32715589_2182456961795147_4601917093837799424_n.jpg?_nc_ht=instagram.fosl3-1.fna.fbcdn.net'
-          },
-          title: 'A space for opportunity',
-          year: '2018',
-          url: '#'
-        },
-        {
-          mainImage: {
-            url: 'https://instagram.fosl3-1.fna.fbcdn.net/vp/0af45072e6a6c9297a34ccfecd154016/5D821BC0/t51.2885-15/e35/32715589_2182456961795147_4601917093837799424_n.jpg?_nc_ht=instagram.fosl3-1.fna.fbcdn.net'
-          },
-          title: 'A space for opportunity',
-          year: '2018',
-          url: '#'
+  apollo: {
+    projects: gql`
+    query {
+      projects: entries(section:projects) {
+    		... on Projects {
+          title
+          mainImage {
+            url
+          }
+          slug
         }
-      ]
-    }
+      }
+    }`
   }
 }
 </script>
