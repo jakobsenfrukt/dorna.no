@@ -1,6 +1,6 @@
 <template>
   <div class="gallery">
-    <a v-for="(project, index) in projects" :key="index" :href="`projects/${project.slug}`" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
+    <a v-for="(project, index) in projects" :key="index" :href="`/projects/${project.slug}`" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
       <img :src="project.mainImage[0].url" />
       <div class="text">
         <span>{{ project.title }}</span>
