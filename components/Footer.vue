@@ -23,6 +23,9 @@
   span {
     display: block;
   }
+  a {
+    text-decoration: none;
+  }
 }
 .email {
   text-align: left;
