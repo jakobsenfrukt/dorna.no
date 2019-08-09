@@ -6,14 +6,15 @@
         As an interior architect, Dorna's way of working is creative and highly experimental, while always resulting in functional environments tailored for the various activities that are to take place in a given space. In addition, a lot of her work is focused on sustainable design, challenging materiality and existing norms to meet the requirements of the modern age, merging traditional craft and the digital world. She is passionate about cultivating a dialogue with nature, one she fears is getting lost in our current society. She is driven by her curiousity and always interested in exploring new ways of working, in tune with the latest developments within the field, both concerning technology and design thinking. She approaches each project in its own tailored way with a passionate sensitivity to details.
       </p>
     </div>
-    <div v-for="(block, index) in blocks" :key="index" class="about-block">
+    <div v-for="(block, index) in about.textBlocks" :key="index" class="about-block">
       <h3>{{ block.heading }}</h3>
-      <div v-html="block.text"></div>
+      <div v-html="block.body.content"></div>
     </div>
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
 export default {
   data: function() {
     return {
@@ -43,6 +44,28 @@ export default {
           text: 'Dorna grew up in Tehran, Iran. She has since lived in Kuala Lumpur, Malaysia, and currently resides in Oslo, Norway. She speaks English, Farsi, Turkish, and Norwegian. She loves ice cream, beach runs, Dior lipstick, peculiar houseplants, and collecting unique design items.'
         }
       ]
+    }
+  },
+  apollo: {
+    about: {
+      variables() {
+        return { slug: this.$route.params.slug }
+      },
+      query: gql`
+      query {
+      about: entry(title: "About") {
+        ... on About {
+          textBlocks {
+            ... on TextBlocksTextBlock {
+              heading
+              body {
+                content
+              }
+            }
+          }
+        }
+      }
+    }`
     }
   }
 }
