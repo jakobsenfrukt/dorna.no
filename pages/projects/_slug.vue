@@ -11,6 +11,12 @@
           <p>
             {{ project.body }}
           </p>
+          <ul class="project-meta">
+            <li v-if="project.category"><strong>Category</strong><br />{{ project.category }}</li>
+            <li v-if="project.client"><strong>Client</strong><br />{{ project.client }}</li>
+            <li v-if="project.location"><strong>Location</strong><br />{{ project.location }}</li>
+            <li v-if="project.notes">{{ project.notes }}</li>
+          </ul>
         </div>
       </div>
       <div class="project-gallery">
@@ -58,6 +64,10 @@ export default {
               url
             }
             body
+            category
+            location
+            client
+            notes
             gallery {
               url
             }
@@ -86,10 +96,36 @@ export default {
 .project-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 2rem;
 }
 .project-header, .project-text {
-  width: 50%;
+  width: 49%;
+}
+.project-meta {
+  font-size: 0.8rem;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    width: 50%;
+    padding: 0 2rem .8rem 0;
+  }
+  strong {
+    font-weight: normal;
+  }
+}
+.project-gallery {
+  display: flex;
+  justify-content: space-between;
+
+  .project-image {
+    width: 49%;
+  }
 }
 @media (max-width: $media-s) {
   .project-header, .project-text {
