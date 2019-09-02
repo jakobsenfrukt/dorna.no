@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="email">
       <span>Email</span>
-      <span><a href="mailto:drnlkn@gmail.com" target="_blank">drnlkn@gmail.com</a></span>
+      <span><a href="mailto:hi@dorna.no" target="_blank">hi@dorna.no</a></span>
     </div>
     <div class="social">
       <span>Instagram</span>

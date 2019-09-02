@@ -6,7 +6,7 @@
     </div>
     <div class="contact">
       <span>Available for projects</span>
-      <span><a href="mailto:drnlkn@gmail.com" target="_blank">drnlkn@gmail.com</a></span>
+      <span><a href="mailto:hi@dorna.no" target="_blank">hi@dorna.no</a></span>
     </div>
   </header>
 </template>

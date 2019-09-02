@@ -4,7 +4,7 @@
       <img :src="project.mainImage[0].url" />
       <div class="text">
         <span>{{ project.title }}</span>
-        <span>{{ project.year }}</span>
+        <span v-if="project.year">{{ project.year }}</span>
       </div>
     </a>
     <!--<div class="more">

@@ -3,7 +3,7 @@
     <h2 class="about-block">CV</h2>
     <div class="about-block double">
       <p>
-        As an interior architect, Dorna's way of working is creative and highly experimental, while always resulting in functional environments tailored for the various activities that are to take place in a given space. In addition, a lot of her work is focused on sustainable design, challenging materiality and existing norms to meet the requirements of the modern age, merging traditional craft and the digital world. She is passionate about cultivating a dialogue with nature, one she fears is getting lost in our current society. She is driven by her curiousity and always interested in exploring new ways of working, in tune with the latest developments within the field, both concerning technology and design thinking. She approaches each project in its own tailored way with a passionate sensitivity to details.
+        {{ about.body }}
       </p>
     </div>
     <div v-for="(block, index) in about.textBlocks" :key="index" class="about-block">
@@ -55,6 +55,7 @@ export default {
       query {
       about: entry(title: "About") {
         ... on About {
+          body
           textBlocks {
             ... on TextBlocksTextBlock {
               heading
