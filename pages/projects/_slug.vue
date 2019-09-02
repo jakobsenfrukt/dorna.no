@@ -134,6 +134,12 @@ export default {
   .project-header {
     margin-bottom: 1rem;
   }
+  .project-gallery {
+    display: block;
+    .project-image {
+      width: 100%;
+    }
+  }
 }
 @keyframes fade-in {
   from {
