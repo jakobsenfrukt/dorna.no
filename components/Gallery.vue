@@ -1,7 +1,7 @@
 <template>
   <div class="gallery">
     <a v-for="(project, index) in projects" :key="index" :href="`/projects/${project.slug}`" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
-      <img :src="project.mainImage[0].url" />
+      <img :src="project.mainImage[0].thumbnail" />
       <div class="text">
         <span>{{ project.title }}</span>
         <span v-if="project.year">{{ project.year }}</span>
@@ -24,7 +24,7 @@ export default {
     		... on Projects {
           title
           mainImage {
-            url
+            thumbnail: url(transform: thumb)
           }
           slug
         }

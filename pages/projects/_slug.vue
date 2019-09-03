@@ -1,7 +1,7 @@
 <template>
   <main class="site-main">
     <section class="project-page">
-      <img class="project-image" :src="project.mainImage[0].url" />
+      <img class="project-image" :src="project.mainImage[0].fullWidth" />
       <div class="project-content">
         <div class="project-header">
           <h1 class="project-title">{{ project.title }}</h1>
@@ -21,7 +21,7 @@
       </div>
       <div class="project-gallery">
         <div v-for="(image, index) in project.gallery" :key="index" class="project-image" :style="{ animationDelay: index/3 + 's' }">
-          <img :src="image.url" />
+          <img :src="image.halfWidth" />
         </div>
       </div>
     </section>
@@ -61,7 +61,7 @@ export default {
             title
             year
             mainImage {
-              url
+              fullWidth: url(transform: fullWidth)
             }
             body
             category
@@ -69,7 +69,7 @@ export default {
             client
             notes
             gallery {
-              url
+              halfWidth: url(transform: halfWidth)
             }
           }
         }
