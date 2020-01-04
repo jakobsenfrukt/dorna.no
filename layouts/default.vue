@@ -14,6 +14,9 @@ export default {
   components: {
     Header,
     Footer
+  },
+  beforeMount() {
+    console.log("website by jakobsenfrukt.no");
   }
 }
 </script>

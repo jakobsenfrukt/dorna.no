@@ -1,6 +1,6 @@
 <template>
   <div class="gallery">
-    <a v-for="(project, index) in projects" :key="index" :href="`/projects/${project.slug}`" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
+    <a v-for="(project, index) in filteredProjects" :key="index" :href="`/projects/${project.slug}`" class="gallery-item" :style="{ animationDelay: index/3 + 's' }">
       <img :src="project.mainImage[0].thumbnail" />
       <div class="text">
         <span>{{ project.title }}</span>
@@ -17,6 +17,9 @@
 import gql from 'graphql-tag'
 
 export default {
+  props: {
+    current: String
+  },
   apollo: {
     projects: gql`
     query {
@@ -30,6 +33,11 @@ export default {
         }
       }
     }`
+  },
+  computed: {
+    filteredProjects: function() {
+      return this.projects.filter(project => project.title !== this.current);
+    }
   }
 }
 </script>
@@ -58,7 +66,7 @@ export default {
 
     img {
       transition: all .2s linear;
-      filter: grayscale(60%);
+      filter: grayscale(40%);
     }
 
     &:hover {

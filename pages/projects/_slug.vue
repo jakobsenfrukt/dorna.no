@@ -25,7 +25,8 @@
         </div>
       </div>
     </section>
-    <Gallery />
+    <h2>Other projects</h2>
+    <Gallery :current="project.title" />
   </main>
 </template>
 
@@ -121,11 +122,18 @@ export default {
 }
 .project-gallery {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   .project-image {
     width: 49%;
   }
+}
+h2 {
+  font-weight: 400;
+  margin: .4rem 2rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 @media (max-width: $media-s) {
   .project-header, .project-text {
