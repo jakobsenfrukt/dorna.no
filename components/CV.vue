@@ -1,7 +1,10 @@
 <template>
   <div class="about">
-    <h2 class="about-block">CV</h2>
+    <div class="about-block portrait">
+      <img v-if="about.mainImage.length" class="portrait" :src="about.mainImage[0].url" alt="Portrait of Dorna smiling with bright red lipstick" />
+    </div>
     <div class="about-block double">
+      <h2>CV</h2>
       <p>
         {{ about.body }}
       </p>
@@ -26,6 +29,9 @@ export default {
       about: entry(title: "About") {
         ... on About {
           body
+          mainImage {
+            url
+          }
           textBlocks {
             ... on TextBlocksTextBlock {
               heading
@@ -64,6 +70,9 @@ export default {
       width: calc(66.6666666666% - 2rem);
       margin-bottom: 5rem;
     }
+    &.portrait {
+      padding-right: 0;
+    }
   }
 
   @media (max-width: $media-m) {
@@ -71,7 +80,7 @@ export default {
       width: calc(50% - 2rem);
 
       &.double {
-        width: 100%;
+        width: calc(50% - 2rem);
       }
     }
   }
